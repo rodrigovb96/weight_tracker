@@ -1,0 +1,52 @@
+<html>
+<head>
+<script>
+window.onload = function() {
+
+
+var dataPoints = [];
+
+var chart = new CanvasJS.Chart("chartContainer", {
+	animationEnabled: true,
+	theme: "dark",
+	title: {
+		text: "Weikly Weight Data"
+	},
+	axisY: {
+		title: "Weight",
+		titleFontSize: 24,
+		maximum: 100,
+	},
+	data: [{
+		type: "line",
+		yValueFormatString: "#,###.## kgs",
+		dataPoints: dataPoints
+	}]
+});
+
+function addData(data) {
+	console.log(data)
+	for (var i = 0; i < data.Days.length; i++) {
+		dataPoints.push({
+			label: data.Days[i].Date, 
+			y: data.Days[i].Weight
+		});
+	}
+	chart.render();
+
+	document.getElementById("mean").innerHTML = data.Mean;
+
+}
+
+$.getJSON("/files/data/{{ .FilePath }}.json", addData);
+
+}
+</script>
+</head>
+<div id="chartContainer" style="height: 370px; width: 100%;"></div>
+<p id="label">Weight Mean:</p>
+<p id="mean"></p>
+<script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+</body>
+</html>
