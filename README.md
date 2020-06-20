@@ -5,17 +5,17 @@ Input weights daily and then you could plot the weakly measures.
 
 For plotting: 
 
-localhost:8090/<Month>/<Week>
+localhost:8090/\<Month\>/\<Week\>
 
-<Month> -> 01, 02, ... 12;
-<Week> -> 0, 1, 2, ... 4;
+\<Month\> -> 01, 02, ... 12;
+\<Week\> -> 0, 1, 2, ... 4;
 
 
 For input a weight;
 
-localhost:PORT/input/<Weight>
+localhost:PORT/input/\<Weight\>
 
-<Weight> -> float value i.e 75.6
+\<Weight\> -> float value i.e 75.6
 
 
 # Build & Usage:
